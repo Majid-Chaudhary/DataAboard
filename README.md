@@ -1,11 +1,11 @@
-# 🧭 OpenDataPlane (Working Title)
+# OpenDataPlane (Working Title)
 
 **Self-Service, On-Prem Data Mesh Platform for SQL and ML Workspaces**
 Empowering analysts, engineers, and scientists to securely explore and model data — without IT tickets, data exports, or vendor lock-in.
 
 ---
 
-## 🚀 Vision
+## Vision
 
 Enable organizations to:
 
@@ -17,7 +17,7 @@ Enable organizations to:
 
 ---
 
-## 🔍 Problem
+## Problem
 
 Most organizations still rely on central IT for access provisioning, analytics infrastructure, and ML compute.
 This creates delays, bottlenecks, and discourages exploration — especially in regulated or on-prem environments.
@@ -32,7 +32,7 @@ Existing tools:
 
 ---
 
-## ⚙️ Architecture Overview (High-Level)
+## Architecture Overview (High-Level)
 
 | Component               | Purpose                                                        |
 | ----------------------- | -------------------------------------------------------------- |
@@ -49,16 +49,16 @@ Existing tools:
 
 ## 🔑 Key Features
 
-* 🌐 Web-based UI for search, access requests, workspace launching
-* 🔐 Secure access via LDAP, JWT, and Trino policies
-* 📦 S3-compatible or HDFS-based Parquet table access via Trino
-* 📊 Jupyter notebooks for ML — directly on Iceberg/Delta data
-* 🔎 Metadata and lineage integration via OpenMetadata API
-* ⚙️ Fully Kubernetes-native and GitOps-friendly
+* Web-based UI for search, access requests, workspace launching
+* Secure access via LDAP, JWT, and Trino policies
+* S3-compatible or HDFS-based Parquet table access via Trino
+* Jupyter notebooks for ML — directly on Iceberg/Delta data
+* Metadata and lineage integration via OpenMetadata API
+* Fully Kubernetes-native and GitOps-friendly
 
 ---
 
-## 🧠 Who Is This For?
+## Who Is This For?
 
 * Enterprises with large on-prem datasets and internal analysts
 * Data platforms seeking governance without vendor lock-in
@@ -67,20 +67,20 @@ Existing tools:
 
 ---
 
-## 📅 Project Status
+## Project Status
 
 | Feature                   | Status         |
 | ------------------------- | -------------- |
-| FastAPI backend scaffold  | 🔄 In Progress |
-| JWT + LDAP integration    | 🔄 In Progress |
-| Trino catalog control     | 🟢 Designed    |
-| JupyterHub setup          | 🟢 Designed    |
-| GitLab-based workspace CI | 🟢 Designed    |
-| OpenMetadata integration  | 🟢 Designed    |
+| FastAPI backend scaffold  | In Progress    |
+| JWT + LDAP integration    | In Progress    |
+| Trino catalog control     | Designed       |
+| JupyterHub setup          | Designed       |
+| GitLab-based workspace CI | Designed       |
+| OpenMetadata integration  | Designed       |
 
 ---
 
-## 🧩 Contribute or Follow
+## Contribute or Follow
 
 This project is actively being developed in the open. We welcome:
 
@@ -94,7 +94,7 @@ This project is actively being developed in the open. We welcome:
 
 ---
 
-## 📬 Contact & Updates
+## Contact & Updates
 
 Reach out via GitHub, discussions, or contributor Discord (coming soon).
 This README will evolve as the first modules are released.
