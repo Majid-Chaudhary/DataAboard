@@ -47,7 +47,7 @@ Existing tools:
 
 ---
 
-## 🔑 Key Features
+## Key Features
 
 * Web-based UI for search, access requests, workspace launching
 * Secure access via LDAP, JWT, and Trino policies
