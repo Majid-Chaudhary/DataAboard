@@ -1,6 +1,6 @@
-# DataPlane (Working Title)
+# DataDemocrat (Working Title)
 
-**Self-Service, On-Prem Data Mesh Platform for SQL and ML Workspaces**
+**Self-Service, On-Prem Data Mesh / Democratization Platform for SQL and ML Workspaces**
 Empowering analysts, engineers, and scientists to securely explore and model data — without IT tickets, data exports, or vendor lock-in.
 
 ---
