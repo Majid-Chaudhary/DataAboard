@@ -7,7 +7,7 @@ from api.routes_workspace import router as workspace_router
 from api.routes_access import router as access_router
 
 app = FastAPI(
-    title="OpenDataPlane API",
+    title="DataDemocrat API",
     description="Self-service on-prem data platform for secure SQL and ML workspaces",
     version="0.1.0",
     docs_url="/docs",
@@ -30,4 +30,4 @@ app.include_router(access_router, prefix="/access", tags=["Access"])
 
 @app.get("/")
 def read_root():
-    return {"msg": "Welcome to OpenDataPlane backend API!"}
+    return {"msg": "Welcome to DataDemocrate backend API!"}

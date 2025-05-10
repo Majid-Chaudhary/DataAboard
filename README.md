@@ -28,7 +28,7 @@ Existing tools:
 * Don't connect discovery, access control, and compute in one OSS stack
 * Assume centralized ETL ownership — which doesn't reflect real orgs
 
-**OpenDataPlane solves this by acting as a control plane above your data — not inside it.**
+**DataDemocrat solves this by acting as a control plane above your data — not inside it.**
 
 ---
 
@@ -101,4 +101,4 @@ This README will evolve as the first modules are released.
 
 ---
 
-> OpenDataPlane is an open-source initiative to bring governed, self-service compute to the heart of on-prem data platforms — without reinventing your storage or pipelines.
+> DataDemocrat is an open-source initiative to bring governed, self-service compute to the heart of on-prem data platforms — without reinventing your storage or pipelines.
