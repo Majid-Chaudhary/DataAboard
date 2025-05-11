@@ -51,10 +51,11 @@ Existing tools:
 
 * Web-based UI for search, access requests, workspace launching
 * Secure access via LDAP, JWT, and Trino policies
-* S3-compatible or HDFS-based Parquet table access via Trino
+* S3-compatible or HDFS-based Parquet table and database tables access via Trino
 * Jupyter notebooks for ML — directly on Iceberg/Delta data
 * Metadata and lineage integration via OpenMetadata API
 * Fully Kubernetes-native and GitOps-friendly
+* Automated deployment of compute(Trino & Jupyter) and storage (Workspace) on Kubernetes 
 
 ---
 
