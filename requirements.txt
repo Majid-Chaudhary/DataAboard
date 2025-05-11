@@ -1,1 +1,24 @@
-# requirements.txt
+fastapi
+uvicorn
+
+# Authentication
+python-jose[cryptography]
+passlib[bcrypt]
+ldap3
+
+# Environment variable loading
+python-dotenv
+
+# Trino access (optional for future use)
+trino
+
+# HTTP client (for GitLab, metadata APIs)
+httpx
+
+# S3 / MinIO integration
+boto3
+
+# Development tools (optional but recommended)
+black
+isort
+pytest
