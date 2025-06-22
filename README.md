@@ -28,7 +28,7 @@ Existing tools:
 * Don't connect discovery, access control, and compute in one OSS stack
 * Assume centralized ETL ownership — which doesn't reflect real orgs
 
-**DataDemocrat solves this by acting as a control plane above your data — not inside it.**
+**DataAboard solves this by acting as a control plane above your data — not inside it.**
 
 ---
 
