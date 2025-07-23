@@ -2,7 +2,13 @@
 
 ## Self-Service, On-Prem Data Mesh / Democratization Platform
 
-Empowering everyone from analysts, engineers, and scientists to ordinary users to securely discover, access, and model data – without IT tickets, data exports, or vendor lock-in.
+Empowering everyone — from analysts, engineers, and scientists to business users — to securely discover, access, and model data without IT tickets, data exports, or vendor lock-in.
+
+We believe data creators and domain experts know their data best — and they should be able to access and act on it without friction.
+
+Our goal is not just to remove barriers between people and their data, but also to eliminate barriers to platform adoption — by focusing on seamless integration, simplicity, and zero vendor dependency.
+
+With Version 2, we aim to embed LLM capabilities directly into the experience, enabling users to search, explore, and reason over data using natural language — removing all borders between people, data, and decision-making.
 
 ---
 
@@ -13,7 +19,7 @@ In today's data-driven world, organizations are bottlenecked by centralized data
 * **Discover, request, and access datasets via a unified portal**, making data easily findable and understandable.
 * **Launch isolated, governed SQL and ML workspaces** on-demand, accelerating time to insight.
 * **Enforce granular, table-level access policies** by design, ensuring security and compliance without complex storage hacks.
-* **Run entirely on-premise**, leveraging existing infrastructure and ensuring data sovereignty.
+* **Run entirely on-premise**, leveraging existing infrastructure and ensuring data sovereignty. Cloud support later via connectors.
 * **Stay open-source, auditable, and extensible**, fostering community and avoiding vendor lock-in.
 
 We believe data democratization shouldn't compromise governance or security, especially when data cannot leave your premises.
@@ -47,8 +53,6 @@ Inspired by projects like Airbyte, DataAboard focuses on abstracting complexity 
        style="border: 1px solid #ccc; border-radius: 6px; padding: 6px;" />
   <br/>
   <em>MVP-Figure: GitOps-based access control using Iceberg, Trino, and Kubernetes</em>
-  <br/>
-  <em>Support for further integrations will be added later by adding community connectors</em>
 </p>
 
 DataAboard provides an intelligent orchestration layer using a set of well-established open-source components:
@@ -65,7 +69,7 @@ DataAboard provides an intelligent orchestration layer using a set of well-estab
   * **Purpose:** A high-performance distributed SQL query engine for federated querying across diverse data sources.
   * **Strategy:** DataAboard configures and manages Trino, which uses its own rich set of connectors to query underlying data. This enables users to perform **single, federated queries across Data Warehouses (DWH), Data Lakehouses (DLH - Iceberg, Delta, Hudi), and traditional Hive** installations, abstracting away underlying data complexities. Trino also serves as the primary enforcement point for granular, table-level access policies.
 * **JupyterHub (Optional ML Workspace):** Provides isolated, customizable ML workspaces per user or team, deeply integrated with Trino for direct access to governed data.
-* **GitLab CI/CD:** Automates workspace provisioning, configuration updates, and crucially, **processes user data access requests via Git branch creation**, ensuring an auditable and version-controlled governance flow.
+* **GitOps CI/CD:** Automates workspace provisioning, configuration updates, and crucially, **processes user data access requests via Git branch creation**, ensuring an auditable and version-controlled governance flow.
 * **MinIO / Ceph / HDFS:** Flexible storage backends for your open table formats (Iceberg, Delta) on-premise, ensuring data sovereignty.
 
 ## Key Features
@@ -80,10 +84,10 @@ DataAboard provides an intelligent orchestration layer using a set of well-estab
 
 ## Federated Data Ownership & Access Control (Design Principles)
 
-* **Domain Ownership:** Each department owns its own MiniIO (S3) bucket (or other compatible storage) containing its fact tables.
-* **Open Table Formats:** Tables are stored in **Apache Iceberg** format (with plans for Delta Lake and Apache Hudi connectors), ensuring schema evolution, versioning, and ACID properties.
+* **Domain Ownership:** Each department owns its own read-only (With Grant Option) access to MiniIO (S3) bucket (or other compatible storage) containing its fact tables.
+* **Open Table Formats:** Tables are stored in **Apache Iceberg** format (with plans for Delta Lake, Apache Hudi & other connectors), ensuring schema evolution, versioning, and ACID properties.
 * **Shared Dimensions:** Dimension tables are globally readable across departments for consistent analytics.
-* **GitOps for Access:** Users request data access by creating a GitLab branch. A CI/CD pipeline automates the provisioning of **scoped read-only access via Trino**, limited to the requested fact tables.
+* **GitOps for Access:** Users request data access by creating a Git branch. A CI/CD pipeline automates the provisioning of **scoped read-only access via Trino**, limited to the requested fact tables.
 * **Traceability:** This ensures data product-level security, domain autonomy, and full traceability of all access grants.
 
 ## Self-Service Compute & Analytics Workspace (User Experience)
