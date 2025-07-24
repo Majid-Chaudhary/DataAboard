@@ -44,7 +44,7 @@ Inspired by projects like Airbyte, DataAboard focuses on abstracting complexity 
 * **Simplicity for Users:** Through a unified portal and intuitive GitOps-based access requests, users can focus on *what data they need* and *what analysis they want to perform*, not *how to get access* or *how to provision compute*.
 * **No Operational Headaches:** Automated provisioning, consistent governance enforcement, and leveraging resilient open-source tools reduce manual operational burdens for platform teams.
 
-## Architecture Overview (High-Level)
+## Federated Access & Workspace Provisioning
 
 <p align="center">
   <img src="./assets/DataAboard.jpg"
@@ -54,6 +54,8 @@ Inspired by projects like Airbyte, DataAboard focuses on abstracting complexity 
   <br/>
   <em>MVP-Figure: GitOps-based access control using Iceberg, Trino, and Kubernetes</em>
 </p>
+
+## Architecture Overview (High-Level)
 
 DataAboard provides an intelligent orchestration layer using a set of well-established open-source components:
 
