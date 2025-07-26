@@ -1,48 +1,59 @@
-# DataAboard (Working Title)
+# DataAboard – The First Open-Source Hybrid Data Platform for Humans and LLM Agents
 
-## Self-Service, On-Prem Data Mesh / Democratization Platform
+## Self-Service, On-Prem + Cloud Data Mesh / Democratization Platform
 
-Empowering everyone — from analysts, engineers, and scientists to business users — to securely discover, access, and model data without IT tickets, data exports, or vendor lock-in.
+Empowering everyone — from analysts, engineers, and scientists to business users and autonomous agents — to securely discover, access, and model data without IT tickets, data exports, or vendor lock-in.
 
-We believe data creators and domain experts know their data best — and they should be able to access and act on it without friction.
+We believe data creators and domain experts — human or machine — know their data best and should be able to act on it without friction.
 
-Our goal is not just to remove barriers between people and their data, but also to eliminate barriers to platform adoption — by focusing on seamless integration, simplicity, and zero vendor dependency.
-
-With Version 2, we aim to embed LLM capabilities directly into the experience, enabling users to search, explore, and reason over data using natural language — removing all borders between people, data, and decision-making.
+Our goal is not just to remove barriers between people and their data, but to eliminate obstacles for **intelligent agents** as well. With Version 2, DataAboard becomes the first open-source platform built natively for **hybrid collaboration** between humans and LLM agents — featuring shared workspaces, secure semantic access, and coordinated task execution.
 
 ---
 
 ## Vision
 
-In today's data-driven world, organizations are bottlenecked by centralized data access and compute provisioning, especially in on-premise or highly regulated environments. DataAboard's vision is to enable organizations to:
+In today's data-driven world, organizations are bottlenecked by centralized access and compute provisioning — especially in on-premise or hybrid-regulated environments. DataAboard's vision is to enable:
 
-* **Discover, request, and access datasets via a unified portal**, making data easily findable and understandable.
-* **Launch isolated, governed SQL and ML workspaces** on-demand, accelerating time to insight.
-* **Enforce granular, table-level access policies** by design, ensuring security and compliance without complex storage hacks.
-* **Run entirely on-premise**, leveraging existing infrastructure and ensuring data sovereignty. Cloud support later via connectors.
-* **Stay open-source, auditable, and extensible**, fostering community and avoiding vendor lock-in.
+* **Self-service dataset discovery and access** via a unified portal
+* **Governed SQL/ML workspaces** that launch on demand
+* **Fine-grained access policies** enforced at the data layer
+* **Full on-premise operation**, with future cloud connector support
+* **Zero vendor lock-in**, open standards, community extensibility
 
-We believe data democratization shouldn't compromise governance or security, especially when data cannot leave your premises.
+### Hybrid Extension:
+As intelligent agents take on structured tasks (e.g., reporting, summarization, anomaly detection), they face the **same data friction** humans do. DataAboard embraces this shift — providing LLM agents with identity, access control, traceability, scheduling, and collaborative workspaces from the ground up.
+
+---
 
 ## The Problem DataAboard Solves
 
-Most organizations still rely on central IT for access provisioning, analytics infrastructure, and ML compute. This creates:
+Most organizations still rely on centralized IT for access, analytics infra, and ML provisioning:
 
-* **Delays and Bottlenecks:** Lengthy IT ticket processes for data access and environment setup.
-* **Limited Exploration:** Discouragement of ad-hoc analysis due to friction.
-* **Lack of Control:** Over-reliance on vendor-specific tools that are often cloud-first, leading to vendor lock-in and data residency challenges.
-* **Governance Gaps:** Difficulty implementing consistent, auditable access control across diverse on-prem data sources.
+* **Delays:** Data access and workspace requests via ticketing
+* **Limited Exploration:** Friction blocks ad-hoc and agile work
+* **Lock-In:** Vendor-specific stacks that exclude on-prem users
+* **Governance Gaps:** Inconsistent access across tools and teams
 
-**DataAboard solves this by acting as a pragmatic, open-source control plane over your existing data infrastructure.** We don't reinvent the wheel; we connect the best wheels together to deliver a seamless experience.
+### New Reality:
+Soon, departments will run LLM agents at scale. Without coordination, they’ll:
+* Query the same data repeatedly
+* Operate on stale snapshots
+* Drift from team expectations
+
+DataAboard is designed to solve this — proactively — with **coordinated agent access**, **data freshness visibility**, and **shared execution memory** across teams.
+
+---
 
 ## The DataAboard Philosophy: "Connectors + Simplicity + No Headache"
 
-Inspired by projects like Airbyte, DataAboard focuses on abstracting complexity through existing community "connectors" and a streamlined user experience:
+Inspired by projects like Airbyte, DataAboard focuses on abstracting complexity through modular components and a frictionless experience:
 
-* **No Reinventing Core Engines:** We don't build new query engines, object storage systems, or metadata platforms. Instead, we integrate and orchestrate battle-tested open-source components.
-* **Connectors to Infrastructure:** DataAboard doesn't build its own connectors. Instead, it reuses existing, community-tested connectors from platforms like OpenMetadata and Trino. OpenMetadata acts as the single source of truth for discovery and lineage, while Trino handles querying across sources via its rich connector ecosystem. This ensures maximum compatibility, minimal maintenance, and full reuse of trusted components — no reinvention required.
-* **Simplicity for Users:** Through a unified portal and intuitive GitOps-based access requests, users can focus on *what data they need* and *what analysis they want to perform*, not *how to get access* or *how to provision compute*.
-* **No Operational Headaches:** Automated provisioning, consistent governance enforcement, and leveraging resilient open-source tools reduce manual operational burdens for platform teams.
+* **No Reinventing Engines:** We orchestrate Trino, OpenMetadata, Iceberg — not rewrite them.
+* **Connector-First:** Use community-maintained connectors from Trino/OpenMetadata for max compatibility.
+* **Simple for Users & Agents:** Intuitive UI and GraphQL for humans and agents alike.
+* **No Operational Burden:** GitOps + Kubernetes = repeatable, auditable, scalable.
+
+---
 
 ## Federated Access & Workspace Provisioning
 
@@ -55,92 +66,104 @@ Inspired by projects like Airbyte, DataAboard focuses on abstracting complexity 
   <em>MVP-Figure: GitOps-based access control using Iceberg, Trino, and Kubernetes</em>
 </p>
 
-## Architecture Overview (High-Level)
+---
 
-DataAboard provides an intelligent orchestration layer using a set of well-established open-source components:
+## Architecture Overview (Hybrid-Enabled)
 
-* **FastAPI Backend:** The core API for authentication, user provisioning, and orchestrating data and compute resources.
-* **JWT + LDAP:** Secure authentication and group-based access logic, integrating with existing enterprise identity providers.
-* **Kubernetes:** The foundational platform for deploying and isolating all compute pods (Trino, JupyterHub, etc.) ensuring scalability and resource governance.
-* **OpenMetadata (Metadata Source of Truth):**
+DataAboard orchestrates intelligent, secure access and compute across both human and agent users, using:
 
-  * **Purpose:** The central hub for all data discovery, metadata cataloging, and lineage tracking.
-  * **Strategy:** DataAboard makes **live API calls to OpenMetadata** to gather real-time metadata (schemas, descriptions, lineage) from various sources. We do not ingest or duplicate the metadata within DataAboard, ensuring OpenMetadata remains the definitive source of truth.
-* **Trino (Universal Query Engine):**
+* **FastAPI Backend:** Core API for authentication, workspace orchestration, and governance flows.
+* **JWT + LDAP + Entra ID:** Unified auth. Agents and humans receive scoped JWTs.
+* **GraphQL Gateway:** Primary interface for LLM agents. Supports fine-grained, introspectable queries.
+* **Agent Scheduler:** Coordinates agent execution windows (e.g., every 30 mins) to reduce load and ensure consistency.
+* **Semantic Fingerprinting:** Logs every agent query (with agent_id, workflow_id, hash, timestamp) to enable reuse and traceability.
+* **Shared Workspaces:** Department-level collaboration spaces for dashboards, notebooks, scheduled jobs, agent logs.
+* **OpenMetadata:** Metadata catalog and lineage source of truth.
+* **Trino:** Federated SQL layer for cross-source queries and access control enforcement.
+* **Kubernetes:** All compute (Trino, JupyterHub, agents) runs in isolated pods.
+* **MinIO / Ceph / HDFS:** S3-compatible storage for open formats (Iceberg, Delta, Hudi).
+* **GitOps CI/CD:** Git-based access provisioning and workspace lifecycle automation.
 
-  * **Purpose:** A high-performance distributed SQL query engine for federated querying across diverse data sources.
-  * **Strategy:** DataAboard configures and manages Trino, which uses its own rich set of connectors to query underlying data. This enables users to perform **single, federated queries across Data Warehouses (DWH), Data Lakehouses (DLH - Iceberg, Delta, Hudi), and traditional Hive** installations, abstracting away underlying data complexities. Trino also serves as the primary enforcement point for granular, table-level access policies.
-* **JupyterHub (Optional ML Workspace):** Provides isolated, customizable ML workspaces per user or team, deeply integrated with Trino for direct access to governed data.
-* **GitOps CI/CD:** Automates workspace provisioning, configuration updates, and crucially, **processes user data access requests via Git branch creation**, ensuring an auditable and version-controlled governance flow.
-* **MinIO / Ceph / HDFS:** Flexible storage backends for your open table formats (Iceberg, Delta) on-premise, ensuring data sovereignty.
+---
 
 ## Key Features
 
-* **Web-based UI:** Intuitive portal for data search, access requests, and workspace launching.
-* **Secure & Granular Access:** Robust security via LDAP, JWT, and Trino policies, with GitOps-driven access provisioning ensuring traceability.
-* **Federated Data Querying:** Access S3-compatible, HDFS-based, or traditional database tables via Trino's powerful federated query capabilities.
-* **Integrated ML Workspaces:** Jupyter notebooks for ML directly on governed Iceberg/Delta data.
-* **Metadata & Lineage:** Seamless integration with OpenMetadata for comprehensive data discovery and understanding.
-* **Kubernetes-Native & GitOps-Friendly:** Fully automated deployment and management of compute and storage on Kubernetes, supporting modern GitOps workflows.
-* **On-Premise Focus:** Designed from the ground up for enterprise data sovereignty and security requirements.
+* **Web UI + GraphQL API:** UI for humans, GraphQL for LLM agents.
+* **Hybrid Workspaces:** Shared spaces for human + agent collaboration on governed data.
+* **Agent Fingerprinting & Logs:** All agent tasks are logged, explainable, and reusable.
+* **Scheduled Agent Tasks:** Coordinated refresh cycles to ensure freshness and avoid redundant queries.
+* **Secure & Granular Access:** Trino policies + scoped JWTs ensure least-privilege access.
+* **Federated Querying:** Cross-source data via Trino, governed by OpenMetadata.
+* **ML + Analytics Workspaces:** Isolated Trino and Jupyter environments per user/team.
+* **Kubernetes-Native:** Scalable, portable, and infrastructure-neutral.
+
+---
 
 ## Federated Data Ownership & Access Control (Design Principles)
 
-* **Domain Ownership:** Each department owns its own read-only (With Grant Option) access to MiniIO (S3) bucket (or other compatible storage) containing its fact tables.
-* **Open Table Formats:** Tables are stored in **Apache Iceberg** format (with plans for Delta Lake, Apache Hudi & other connectors), ensuring schema evolution, versioning, and ACID properties.
-* **Shared Dimensions:** Dimension tables are globally readable across departments for consistent analytics.
-* **GitOps for Access:** Users request data access by creating a Git branch. A CI/CD pipeline automates the provisioning of **scoped read-only access via Trino**, limited to the requested fact tables.
-* **Traceability:** This ensures data product-level security, domain autonomy, and full traceability of all access grants.
+* **Departmental Autonomy:** Domains own their data lake buckets and fact tables.
+* **Apache Iceberg Format:** Enables versioning, schema evolution, and ACID.
+* **Shared Dimensions:** Dimension tables readable across teams.
+* **GitOps-Based Access:** Data access is provisioned by Git branch merge.
+* **Traceable by Default:** All access and compute actions logged.
+* **Agent + Human Ready:** Every design decision supports both usage models.
 
-## Self-Service Compute & Analytics Workspace (User Experience)
+---
 
-* **On-Demand Provisioning:** DataAboard's CI/CD pipeline provisions a dedicated SQL (Trino) and/or ML (JupyterHub) workspace for each user or team.
-* **Empowered Users:** Within their isolated compute environment, users can:
+## Self-Service Compute & Analytics Workspace
 
-  * Run ad hoc SQL queries on Trino across any accessible data source.
-  * Create dashboards, reports, or aggregated cubes.
-  * Export results into Parquet format for reuse or sharing as new data products.
-* **Isolation & Scalability:** All compute is isolated per user/team and dynamically scalable via Kubernetes, preventing resource conflicts and ensuring consistent performance.
-* **Core Philosophy:** This promotes collaborative analysis, domain independence, and the "data-as-a-product" philosophy by providing immediate, governed access to compute alongside data.
+* **On-Demand Provisioning:** GitOps triggers Trino/ML workspace creation.
+* **Per-Team/Per-User Isolation:** Each team runs in its own environment.
+* **Ad-Hoc SQL + ML:** Trino and Jupyter support direct, governed access.
+* **Export & Share:** Save output as Parquet for reuse.
+* **Hybrid Execution:** Agents can operate in workspaces, share outputs, or sync via the scheduler.
 
-## Future Vision: LLM Integration (v2)
+---
 
-While the MVP focuses on building a robust data mesh foundation, our **v2 roadmap** includes deep integration with Large Language Models (LLMs):
+## Hybrid Intelligence Roadmap
 
-* **Secure On-Prem LLM Training:** DataAboard's governed, on-premise data products will provide the ideal, secure, and compliant source for training and fine-tuning private, company-specific LLMs.
-* **AI-Powered Data Discovery:** Leveraging OpenMetadata's rich metadata, LLMs will enable natural language querying of the data catalog, allowing users to find and understand data simply by asking questions.
-* **Enhanced Data Workflows:** LLMs can assist in automating data quality checks, suggesting data transformation logic, and generating documentation, further simplifying data operations.
-* **Self-Service AI Applications:** The JupyterHub workspaces will evolve to support the development and deployment of internal AI applications that leverage the governed data.
+The future is hybrid. DataAboard already supports:
 
-By building a strong data foundation first, DataAboard ensures that your future LLM initiatives will operate on reliable, secure, and well-understood data.
+* **Agent Identity + Scoped Access**
+* **Explainable Query Logs + Fingerprints**
+* **Shared Workspaces Between Humans & Agents**
+* **Scheduled Execution to Avoid Duplication**
+
+We're building toward:
+
+* **Semantic Memory APIs** for agents
+* **Self-tuning agent workflows**
+* **Agent feedback loops via UI**
+
+---
 
 ## Project Status
 
 This project is actively being developed in the open, targeting a **robust MVP launch within approximately one year**.
 
 * FastAPI backend scaffold: **In Progress**
-* JWT + LDAP integration: **In Progress**
-* Trino catalog control: **Designed** (Implementation starting soon)
-* JupyterHub setup: **Designed** (Implementation starting soon)
-* GitLab-based workspace CI/CD: **Designed** (Implementation starting soon)
-* OpenMetadata integration: **Designed** (Implementation starting soon)
-* Core Kubernetes deployments: **In Progress**
-* Initial documentation & deployment recipes: **Starting Soon**
+* JWT + LDAP + Agent ID support: **In Progress**
+* Trino catalog control: **Designed**
+* JupyterHub setup: **Designed**
+* GitLab-based CI/CD: **Designed**
+* OpenMetadata integration: **Designed**
+* GraphQL + Fingerprinting + Scheduler: **Planned**
+* Core Kubernetes deployment: **In Progress**
 
-We are prioritizing core functionality to deliver a stable and valuable initial release.
+---
 
 ## Contribute or Follow
 
-This project is open-source and thrives on community involvement. We welcome:
+We welcome:
 
-* **Contributions:** Code, documentation, testing, and bug reports.
-* **Feedback:** From enterprise architects, data engineers, and data scientists on use cases and features.
-* **Partnerships or Early Pilots:** We are looking for organizations interested in piloting DataAboard in their on-prem environments.
+* **Contributions:** Code, docs, testing, bug reports.
+* **Feedback:** Especially from hybrid orgs or agent-led teams.
+* **Early Pilots:** Looking for teams deploying on-prem and hybrid LLMs.
 
-Follow our progress via GitHub Issues for feature development and milestones. Community discussions, detailed deployment recipes, and demo videos are coming soon.
+---
 
 ## Contact & Updates
 
-Reach out via GitHub discussions, or join our contributor Discord (coming soon). This `README.md` will continue to evolve as the first modules are released and the project matures.
+Reach out via GitHub Discussions. Discord and open roadmap portal coming soon.
 
----
+This README will evolve with each module — just like the platform itself.
