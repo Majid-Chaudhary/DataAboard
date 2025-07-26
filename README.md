@@ -58,7 +58,7 @@ Inspired by projects like Airbyte, DataAboard focuses on abstracting complexity 
 ## Federated Access & Workspace Provisioning
 
 <p align="center">
-  <img src="./assets/DataAboard.jpg"
+  <img src="./assets/hybrid_data_mesh.drawio.png"
        alt="Federated Data Access"
        width="700"
        style="border: 1px solid #ccc; border-radius: 6px; padding: 6px;" />
